@@ -1,0 +1,95 @@
+<p>1. What does a neuron compute?    (1 / 1 point)<br />
+&emsp;[] A neuron computes the mean of all features before applying the output to an activation function<br />
+&emsp;[x] A neuron computes a linear function (z = Wx + b) followed by an activation function<br />
+&emsp;[] A neuron computes a function g that scales the input x linearly (Wx + b)<br />
+&emsp;[] A neuron computes an activation function followed by a linear function (z = Wx + b)  </p>
+
+<p> 2. Which of these is the "Logistic Loss"? (1 / 1 point)<br />
+&emsp;[] L<sup>(i)</sup>(y<sup>(i)</sup> , y&#94;<sup>(i)</sup>) = max(0 , y<sup>(i)</sup> − y&#94;<sup>(i)</sup>)<br />
+&emsp;[x] L<sup>(i)</sup>(y<sup>(i)</sup> , y&#94;<sup>(i)</sup>) = -(y<sup>(i)</sup>*(log(y&#94;<sup>(i)</sup>) + (1−y<sup>(i)</sup>)log⁡(1−y&#94;<sup>(i)</sup>)<br />
+&emsp;[] L<sup>(i)</sup>(y<sup>(i)</sup> , y&#94;<sup>(i)</sup>) = ∣y<sup>(i)</sup> − y&#94;<sup>(i)</sup>∣<sup>2</sup><br />
+&emsp;[] L<sup>(i)</sup>(y<sup>(i)</sup> , y&#94;<sup>(i)</sup>) = ∣y<sup>(i)</sup> − y&#94;<sup>(i)</sup>∣<br /></p>
+  
+<p>3. Suppose img is a (32,32,3) array, representing a 32x32 image with 3 color channels red, green and blue. How do you reshape this into a column vector?                                      (1 / 1 point)<br />
+&emsp;[] x = img.reshape((32 * 32,3))<br />
+&emsp;[] x = img.reshape((3,32 * 32))<br />
+&emsp;[x] x = img.reshape((32 * 32 * 3,1))<br />
+&emsp;[] x = img.reshape((1,32 * 32, *3))   </p>
+  
+<p>4.Consider the two following random arrays "a" and "b". </p>
+<pre><code class="python language-python">a = np.random.randn(2, 3) # a.shape = (2, 3)
+b = np.random.randn(2, 1) # b.shape = (2, 1)
+c = a + b
+</code></pre>
+<p>What will be the shape of "c"?            (1 / 1 point)</p>
+<p>
+&emsp;[] The computation cannot happen because the sizes don't match. It's going to be "Error"!<br />
+&emsp;[] c.shape = (3, 2)<br />
+&emsp;[x] c.shape = (2, 3)<br />
+&emsp;[] c.shape = (2, 1)   </p>
+
+<p>5. Consider the two following random arrays "a" and "b":
+
+<pre><code class="python language-python">a = np.random.randn(4, 3) # a.shape = (4, 3)
+b = np.random.randn(3, 2) # b.shape = (3, 2)
+c = a*b
+</code></pre>
+<p><br />
+What will be the shape of "c"?   (1 / 1 point)<br />
+    &emsp;[] c.shape = (3, 3)<br />
+    &emsp;[] c.shape = (4, 3)<br />
+    &emsp;[] c.shape = (4,2)<br />
+    &emsp;[x] The computation cannot happen because the sizes don't match. It's going to be "Error"!  </p>
+
+<p>6. Suppose you have n~x~ input features per example. Recall that X=[x<sup>(1)</sup>,x<sup>(2)</sup>,…x<sup>(m)</sup>]. What is the dimension of X? (1/1 point)<br />
+&emsp;[] (m,1) <br />
+&emsp;[] (1,m)<br />
+&emsp;[] (m, n<sub>x</sub>)<br />
+&emsp;[] (n<sub>x</sub>,m) <br />
+
+<p>7. Recall that <code>np.dot(a,b)</code> performs a matrix multiplication on <code>a</code> and <code>b</code>, whereas <code>a*b</code> performs an element-wise multiplication. Consider the two following random arrays <code>a</code> and <code>b</code>:  </p>
+<pre><code class="python language-python">a = np.random.randn(12288, 150) # a.shape = (12288, 150)
+b = np.random.randn(150, 45) # b.shape = (150, 45)
+c = np.dot(a,b)
+</code></pre>
+<p><br />
+What is the shape of c? (1 / 1 point)<br />
+    &emsp;[] c.shape = (150,150)<br />
+    &emsp;[] c.shape = (12288, 150)<br />
+    &emsp;[x] c.shape = (12288, 45)<br />
+    &emsp;[] The computation cannot happen because the sizes don't match. It's going to be "Error"!  </p>
+  
+<p>8. Consider the following code snippet:
+<pre><code class="python language-python">
+# a.shape = (3,4)
+# b.shape = (4,1)
+
+for i in range(3):
+  for j in range(4):
+    c[i][j] = a[i][j] + b[j]
+</code></pre>
+<p><br />
+How do you vectorize this? (1 / 1 point)<br />
+&emsp;[] c = a.T + b<br />
+&emsp;[] c = a.T + b.T<br />
+&emsp;[x] c = a + b.T<br />
+&emsp;[] c = a + b  </p>
+</p>
+<p>9. Consider the following code:
+<pre><code class="python language-python">a = np.random.randn(3, 3)
+b = np.random.randn(3, 1)
+c = a*b
+</code></pre>
+<p><br />
+What will be c? (If you’re not sure, feel free to run this in python to find out).  (1 / 1 point)<br />
+&emsp;[x] This will invoke broadcasting, so b is copied three times to become (3,3), and <code>*</code> is an element-wise product so c.shape will be (3, 3)<br />
+&emsp;[] This will invoke broadcasting, so b is copied three times to become (3, 3), and <code>*</code> invokes a matrix multiplication operation of two 3x3 matrices so c.shape will be (3, 3)<br />
+&emsp;[] This will multiply a 3x3 matrix a with a 3x1 vector, thus resulting in a 3x1 vector. That is, c.shape = (3,1).<br />
+&emsp;[] It will lead to an error since you cannot use <code>*</code> to operate on these two matrices. You need to instead use np.dot(a,b)  </p>
+<p>10. Consider the following computational graph:<br />
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/CLczrXpHEeeA3RJRlG3Uqg_3c66355aff0ae7db9e27206f188267f0_Screen-Shot-2017-08-05-at-6.30.51-PM.png?expiry=1592524800000&hmac=1hZUAjFdi8H-qQXIp8P_9po_ybqWDy8XL9u0JRZO8-s" alt="q10" /><br />
+What is the output J? (1 / 1 point)<br />
+&emsp;[] J = (c - 1) * (b + a)<br />
+&emsp;[x] J = (a - 1) * (b + c)<br />
+&emsp;[] J = a * b + b * c + a * c<br />
+&emsp;[] J = (b - 1) * (c + a)<br />
